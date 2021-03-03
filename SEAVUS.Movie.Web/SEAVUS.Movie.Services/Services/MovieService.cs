@@ -177,18 +177,6 @@ namespace SEAVUS.Movie.Services.Services
         {
             Domain.Models.Movie movie = _movieRepository.GetById(id);
 
-            //var movieHallSeats = movie.Shows.Select(x => x.Hall).SingleOrDefault().Seats;
-
-            //List<SeatViewModel> movieSeats = (from s in movieHallSeats
-            //                                  select new SeatViewModel
-            //                                  {
-            //                                      SeatNumber = s.SeatNumber,
-            //                                      Available = s.Available,
-            //                                      RowNumber = s.RowNumber,
-            //                                      Price = s.Price,
-            //                                      Type = s.Type,
-            //                                  }).ToList();
-
             List<ShowViewModel> movieShows = (from m in movie.Shows
                                               select new ShowViewModel
                                               {
@@ -199,7 +187,6 @@ namespace SEAVUS.Movie.Services.Services
                                                   StartDate = m.StartDate,
                                                   EndDate = m.EndDate,
                                                   ShowTime = m.ShowTime,
-                                                  //Seats = movieSeats
 
                                               }).ToList();
             return movieShows;

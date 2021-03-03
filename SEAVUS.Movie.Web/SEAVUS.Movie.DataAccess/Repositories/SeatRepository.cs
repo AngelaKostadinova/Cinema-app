@@ -26,8 +26,7 @@ namespace SEAVUS.Movie.DataAccess.Repositories
 
             IEnumerable<Seat> seats = _db.Seats
                                          .Include(x => x.Hall)
-                                         .ThenInclude(x => x.Shows)
-                                         .ThenInclude(x => x.Movie);
+                                         .ThenInclude(x => x.Seats);
             return seats;
         }
 

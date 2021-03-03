@@ -66,16 +66,16 @@
                                     @Html.DisplayFor(modelItem => item.ShowTime.TimeOfDay)
                                 </td>
                                 <td>
-                                    <a asp-action="Shows" asp-controller="Movie" asp-route-id="@item.HallId"><span class="glyphicon glyphicon glyphicon-tags"></span></a>
+                                    <a asp-action="Hall" asp-controller="Hall" asp-route-id="@item.HallId"><span class="glyphicon glyphicon glyphicon-tags"></span></a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
-            <span class="col-md-2">
-                <a asp-action="Shows" asp-controller="Movie" asp-route-id="@Model.Id" class="btn btn-danger pull-left ticket-btn">Buy ticket</a>
-            </span>
+            @*<span class="col-md-2">
+                <a asp-action="H" asp-controller="Movie" asp-route-id="@Model.Id" class="btn btn-danger pull-left ticket-btn">Buy ticket</a>
+            </span>*@
         </div>
     </div>
 </div>
