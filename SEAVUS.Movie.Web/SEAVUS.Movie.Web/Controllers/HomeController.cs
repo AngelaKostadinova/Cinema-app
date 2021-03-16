@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SEAVUS.Movie.Services.Interfaces;
 using SEAVUS.Movie.Web.Models;
+using SEAVUS.Movie.WebModels.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,9 +12,23 @@ namespace SEAVUS.Movie.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IMovieService _movieService;
+
+        public HomeController(IMovieService movieService)
         {
-            return View();
+            _movieService = movieService;
+        }
+        public IActionResult Index(string searchTerm)
+        {
+            HomeViewModel homeModel = new HomeViewModel();
+            homeModel.LoginModel = new LoginViewModel();
+            homeModel.RegisterModel = new RegisterViewModel();
+            ViewData["Search"] = searchTerm;
+
+            List<MovieViewModel> movies = _movieService.SearchMovies(searchTerm).ToList();
+            homeModel.MoviesModel = movies;
+
+            return View(homeModel);
         }
 
         public IActionResult About()

@@ -13,10 +13,14 @@
 </div>
 <div style="float:left;">
     <ul class="list-group">
+        @{ 
+            var rows = Model.Seats.Where(x => x.Available == 1).Select(x => x.RowNumber.Count()).ToList();
+        }
         @foreach (var seat in Model.Seats)
         {
             if (seat.Available == 1)
             {
+                
                 bool isAvailable = Convert.ToBoolean(seat.Available);
 
                 <li class="list-group-item" style="display:inline-block;">
